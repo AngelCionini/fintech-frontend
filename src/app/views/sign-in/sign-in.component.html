@@ -1,0 +1,41 @@
+<div class="container">
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="example-form">
+        <mat-form-field class="example-full-width">
+        <input matInput
+        id="email" 
+        type="email" 
+        name="email" 
+        ngModel 
+        required 
+        email
+        placeholder="Email*"
+        #email="ngModel" 
+        />
+        @if (email.touched && email.dirty && email.invalid) {
+            <mat-error>
+            Inserire un indirizzo email valido.
+            </mat-error>
+        }
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+        <input matInput
+        id="password" 
+        type="password" 
+        name="password" 
+        ngModel
+        required
+        placeholder="Password*"
+        #password="ngModel"
+        />
+        @if ( password.touched && password.dirty && password.invalid) {
+            <mat-error>Password errata.</mat-error>
+            }
+        </mat-form-field>
+
+        <div class="example-full-width">
+            <button mat-raised-button class="mat-raised-button">Accedi</button>
+        </div>
+        
+    </form>
+</div>
