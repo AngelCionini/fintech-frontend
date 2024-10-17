@@ -12,6 +12,7 @@ import { SignInComponent } from './views/sign-in/sign-in.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import { ValidateEqualModule } from "ng-validate-equal";
 
 @NgModule({
     declarations: [
@@ -29,7 +30,8 @@ import {MatIconModule} from '@angular/material/icon';
       FormsModule,
       MatInputModule,
       MatButtonModule,
-      MatIconModule
+      MatIconModule,
+      ValidateEqualModule
     ],
     providers: [
       provideAnimationsAsync()

@@ -87,6 +87,8 @@
                 name="ripetiPassword" 
                 ngModel
                 required
+                password
+                ngValidateEqual="password"
                 placeholder="Ripeti la password*"
                 #ripetiPassword="ngModel"
                 />
@@ -94,7 +96,7 @@
                     {{ !passwordRepeatVisibility ? "visibility" : "visibility_off" }}
                 </mat-icon>
 
-                <mat-error *ngIf="password !== ripetiPassword && ripetiPassword.touched">Password errata.</mat-error>
+                <mat-error *ngIf="(ripetiPassword.dirty && ripetiPassword.touched) && ripetiPassword.invalid">Password errata.</mat-error>
                 
         </mat-form-field>
 
