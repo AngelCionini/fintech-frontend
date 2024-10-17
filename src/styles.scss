@@ -3,3 +3,46 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.container {
+  margin-top: 50px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: white;
+}
+
+mat-raised-button[type = submit] {
+  width: 100%;
+  background-color: blue !important;
+  color: white !important;
+}
+
+.input-icon {
+  color: blue;
+  display: inline-block;
+}
+
+mat-icon {
+  color: blue;
+}
+

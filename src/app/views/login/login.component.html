@@ -1,1 +1,7 @@
-<p>login works!</p>
+
+<app-sign-in *ngIf="formType === 'signin'; else register" (register)="switchFormType()"></app-sign-in>
+
+<ng-template #register>
+    <app-register (signIn)="switchFormType()"></app-register>
+</ng-template>
+

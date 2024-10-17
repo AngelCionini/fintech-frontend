@@ -11,6 +11,7 @@ import { RegisterComponent } from './views/register/register.component';
 import { SignInComponent } from './views/sign-in/sign-in.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import {MatButtonModule} from '@angular/material/button';
       BrowserAnimationsModule,
       FormsModule,
       MatInputModule,
-      MatButtonModule
+      MatButtonModule,
+      MatIconModule
     ],
     providers: [
       provideAnimationsAsync()
