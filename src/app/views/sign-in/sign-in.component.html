@@ -1,7 +1,7 @@
 <div class="container">
     <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="example-form">
         <mat-form-field class="example-full-width">
-            <mat-icon matPrefix>person</mat-icon> 
+            <mat-icon class="blue-icon" matPrefix>person</mat-icon> 
         
             <input matInput
             id="email" 
@@ -23,7 +23,7 @@
         </mat-form-field>
         
         <mat-form-field class="example-full-width">
-            <mat-icon matPrefix>lock</mat-icon> 
+            <mat-icon class="blue-icon" matPrefix>lock</mat-icon> 
                 <input matInput
                 id="password" 
                 [type]="passwordVisibility ? 'text' : 'password'" 
@@ -33,7 +33,7 @@
                 placeholder="Password*"
                 #password="ngModel"
                 />
-                <mat-icon matSuffix (click)="toggleVisilibity()" style="color: blue;">
+                <mat-icon class="blue-icon" matSuffix (click)="toggleVisilibity()">
                     {{ !passwordVisibility ? "visibility" : "visibility_off" }}
                 </mat-icon>
 
