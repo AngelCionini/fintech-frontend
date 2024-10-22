@@ -46,3 +46,45 @@ mat-raised-button[type = submit] {
   color: blue !important;
 }
 
+.header {
+  background-color: rgb(65, 65, 182); 
+  color: white; 
+  padding: 8px; 
+  display: flex; 
+  align-items: center; 
+  height: 50px;
+  padding-left: 15px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Ombreggiatura */
+}
+
+.menu {
+  background-color: white; 
+  padding: 8px; 
+  display: flex;
+  align-items: center;
+  height: 50px;
+  margin-left: 12px;
+  width: 200px;
+}
+
+.mat-icon {
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+}
+
+
+button.mat-raised-button {
+  width: 100%;
+}
+
+mat-nav-list .mat-list-item:hover {
+  background-color: rgb(65, 65, 182) !important;
+  color: white !important;
+}
+
+mat-sidenav-container {
+  flex: 1;
+}
+
+

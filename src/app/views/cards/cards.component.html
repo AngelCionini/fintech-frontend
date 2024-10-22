@@ -1,0 +1,51 @@
+
+
+<!--    <mat-sidenav-container>
+        <mat-sidenav #sidenav mode="side" class="mat-sidenav">
+           
+        </mat-sidenav>
+    </mat-sidenav-container>-->
+    <mat-drawer-container autosize style="height: 100%; padding: 10px;">
+        <div class="example-sidenav-content">
+
+                <h1>Carte</h1>
+        
+                <table mat-table [dataSource]="cards" class="table">
+        
+                    <ng-container matColumnDef="creditCardIcon">
+
+                    <td mat-cell *matCellDef="let card" style="width: 20px;">
+                        <mat-icon>credit_card</mat-icon>
+                    </td>
+                    </ng-container>
+                
+                    <ng-container matColumnDef="name">
+
+                    <td mat-cell *matCellDef="let card">
+                    <div>{{ card.number }}</div>
+                    <div>€{{ card.amount }} - {{ card.type | titlecase }}</div>
+                    </td>
+                    </ng-container>
+                
+                    <ng-container matColumnDef="deleteIcon">
+
+                    <td mat-cell *matCellDef="let card" style="width: 20px;">
+                        <button mat-icon-button (click)="deleteCard(card._id)">
+                        <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                    </ng-container>
+                
+
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                </table>
+                <br>
+                <button mat-raised-button style="width: 100%;" (click)="drawer.open()">Aggiungi</button>
+        </div>
+        <mat-drawer #drawer class="example-sidenav" mode="side" position="end">
+            <app-new-card (close)="drawer.close()" (cardAdded)="drawer.close(); onCardAdded()"></app-new-card>
+
+        </mat-drawer>
+
+    </mat-drawer-container>
+
