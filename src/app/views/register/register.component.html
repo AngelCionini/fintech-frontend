@@ -1,108 +1,124 @@
 <div class="container">
-    <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="example-form">
-        <mat-form-field class="example-full-width">
-            
-            <input matInput
-            id="email" 
-            type="email" 
-            name="email" 
-            ngModel 
-            required 
-            email
-            placeholder="Email*"
-            #email="ngModel" 
-            />
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="example-form">
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        id="email"
+        type="email"
+        name="email"
+        ngModel
+        required
+        email
+        placeholder="Email*"
+        #email="ngModel"
+      />
 
-            @if (email.touched && email.dirty && email.invalid) {
-                <mat-error>
-                Inserire un indirizzo email valido.
-                </mat-error>
-            }
-        </mat-form-field>
+      @if (email.touched && email.dirty && email.invalid) {
+      <mat-error> Inserire un indirizzo email valido. </mat-error>
+      }
+    </mat-form-field>
 
-        <mat-form-field class="example-full-width">
-            
-            <input matInput
-            id="nome" 
-            type="text" 
-            name="nome" 
-            ngModel 
-            required
-            placeholder="Nome*"
-            #nome="ngModel" 
-            />
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        id="nome"
+        type="text"
+        name="nome"
+        ngModel
+        required
+        placeholder="Nome*"
+        #nome="ngModel"
+      />
 
-            @if (nome.touched && nome.invalid) {
-                <mat-error>
-                Il nome è obbligatorio.
-                </mat-error>
-            }
-        </mat-form-field>
+      @if (nome.touched && nome.invalid) {
+      <mat-error> Il nome è obbligatorio. </mat-error>
+      }
+    </mat-form-field>
 
-        <mat-form-field class="example-full-width">
-            
-            <input matInput
-            id="cognome" 
-            type="text" 
-            name="cognome" 
-            ngModel 
-            required
-            placeholder="Cognome*"
-            #cognome="ngModel" 
-            />
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        id="cognome"
+        type="text"
+        name="cognome"
+        ngModel
+        required
+        placeholder="Cognome*"
+        #cognome="ngModel"
+      />
 
-            @if (cognome.touched && cognome.invalid) {
-                <mat-error>
-                Il cognome è obbligatorio.
-                </mat-error>
-            }
-        </mat-form-field>
-        
-        <mat-form-field class="example-full-width">
- 
-                <input matInput
-                id="password" 
-                [type]="passwordVisibility ? 'text' : 'password'" 
-                name="password" 
-                ngModel
-                required
-                password
-                placeholder="Password*"
-                #password="ngModel"
-                />
-                <mat-icon matSuffix (click)="toggleVisilibity('password')" style="color: blue;">
-                    {{ !passwordVisibility ? "visibility" : "visibility_off" }}
-                </mat-icon>
+      @if (cognome.touched && cognome.invalid) {
+      <mat-error> Il cognome è obbligatorio. </mat-error>
+      }
+    </mat-form-field>
 
-            @if ( password.touched && password.dirty && password.invalid) {
-                <mat-error>La password è <strong>obbligatoria.</strong></mat-error>
-                }
-        </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        id="password"
+        [type]="passwordVisibility ? 'text' : 'password'"
+        name="password"
+        ngModel
+        required
+        password
+        placeholder="Password*"
+        #password="ngModel"
+      />
+      <mat-icon
+        matSuffix
+        (click)="toggleVisilibity('password')"
+        style="color: blue"
+      >
+        {{ !passwordVisibility ? "visibility" : "visibility_off" }}
+      </mat-icon>
 
-        <mat-form-field class="example-full-width">
+      @if ( password.touched && password.dirty && password.invalid) {
+      <mat-error>La password è <strong>obbligatoria.</strong></mat-error>
+      }
+    </mat-form-field>
 
-                <input matInput
-                id="ripetiPassword" 
-                [type]="passwordRepeatVisibility ? 'text' : 'password'" 
-                name="ripetiPassword" 
-                ngModel
-                required
-                password
-                ngValidateEqual="password"
-                placeholder="Ripeti la password*"
-                #ripetiPassword="ngModel"
-                />
-                <mat-icon matSuffix (click)="toggleVisilibity('repeatPassword')" style="color: blue;">
-                    {{ !passwordRepeatVisibility ? "visibility" : "visibility_off" }}
-                </mat-icon>
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        id="ripetiPassword"
+        [type]="passwordRepeatVisibility ? 'text' : 'password'"
+        name="ripetiPassword"
+        ngModel
+        required
+        password
+        ngValidateEqual="password"
+        placeholder="Ripeti la password*"
+        #ripetiPassword="ngModel"
+      />
+      <mat-icon
+        matSuffix
+        (click)="toggleVisilibity('repeatPassword')"
+        style="color: blue"
+      >
+        {{ !passwordRepeatVisibility ? "visibility" : "visibility_off" }}
+      </mat-icon>
 
-                <mat-error *ngIf="(ripetiPassword.dirty && ripetiPassword.touched) && ripetiPassword.invalid">Password errata.</mat-error>
-                
-        </mat-form-field>
+      <mat-error
+        *ngIf="
+          ripetiPassword.dirty &&
+          ripetiPassword.touched &&
+          ripetiPassword.invalid
+        "
+        >Password errata.</mat-error
+      >
+    </mat-form-field>
 
-        <div class="example-full-width">
-            <button color="primary" style="width: 100%;" mat-raised-button type="submit" [disabled]="form.form.invalid">Registrati</button>
-        </div>
-        <a routerLink="login" (click)="onClick()">Hai già un account? Accedi.</a>
-    </form>
+    <div class="example-full-width">
+      <button
+        color="primary"
+        style="width: 100%"
+        mat-raised-button
+        type="submit"
+        [disabled]="form.form.invalid"
+      >
+        Registrati
+      </button>
+    </div>
+    <a routerLink="login" (click)="onClick()">Hai già un account? Accedi.</a>
+  </form>
 </div>

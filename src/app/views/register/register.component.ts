@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
   @Output() signIn = new EventEmitter();
@@ -12,7 +12,7 @@ export class RegisterComponent {
   passwordRepeatVisibility: boolean = false;
 
   toggleVisilibity(type: string) {
-    if (type === "password") {
+    if (type === 'password') {
       this.passwordVisibility = !this.passwordVisibility;
     } else {
       this.passwordRepeatVisibility = !this.passwordRepeatVisibility;
@@ -20,11 +20,19 @@ export class RegisterComponent {
   }
 
   onClick() {
-    this.signIn.emit()
+    this.signIn.emit();
   }
 
   onSubmit(form: NgForm) {
-    console.log('Email: ' + form.value['email'] + ', Nome: ' + form.value['nome'] +
-      ', Cognome: ' + form.value['cognome'] +', Password: ' + form.value['password']);
-    }
+    console.log(
+      'Email: ' +
+        form.value['email'] +
+        ', Nome: ' +
+        form.value['nome'] +
+        ', Cognome: ' +
+        form.value['cognome'] +
+        ', Password: ' +
+        form.value['password']
+    );
+  }
 }

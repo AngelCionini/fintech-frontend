@@ -6,10 +6,9 @@ import { CardsService } from '../../../api/cards.service';
 @Component({
   selector: 'app-new-card',
   templateUrl: './new-card.component.html',
-  styleUrl: './new-card.component.scss'
+  styleUrl: './new-card.component.scss',
 })
 export class NewCardComponent {
-
   constructor(private cardService: CardsService) {}
 
   @Output() close = new EventEmitter();
@@ -21,7 +20,7 @@ export class NewCardComponent {
     surname: '',
     type: 'visa',
     number: '',
-    csc: 0
+    csc: 0,
   };
 
   onClose() {
@@ -33,19 +32,18 @@ export class NewCardComponent {
     this.card.name = form.value.nome;
     this.card.surname = form.value.cognome;
     this.card.number = form.value.numero;
-    this.card.csc = +form.value.codice;
+    this.card.csc = form.value.codice;
     this.cardService.createNewCard(this.card).subscribe({
       next: () => {
-        this.cardAdded.emit(); // Emissione dell'evento
+        this.cardAdded.emit();
       },
       complete: () => {
         form.resetForm();
-      }
+      },
     });
   }
 
   isValidSecurityCode(value: string): boolean {
     return /^\d{3}$/.test(value);
   }
-
 }

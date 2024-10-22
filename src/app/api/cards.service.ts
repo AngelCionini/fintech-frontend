@@ -3,11 +3,10 @@ import { Injectable } from '@angular/core';
 import { Card, CardForm } from '../models/card/card.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CardsService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getAllCards() {
     return this.http.get<Card[]>('http://localhost:3000/cards');

@@ -7,10 +7,9 @@ import { Observable, ReplaySubject } from 'rxjs';
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
-  styleUrls: ['./cards.component.scss']
+  styleUrls: ['./cards.component.scss'],
 })
-export class CardsComponent implements OnInit{
-
+export class CardsComponent implements OnInit {
   cards: Card[] = [];
   displayedColumns = ['creditCardIcon', 'name', 'deleteIcon'];
 
@@ -21,22 +20,18 @@ export class CardsComponent implements OnInit{
   }
 
   deleteCard(id: string) {
-    this.cardService.deleteCard(id).subscribe(
-      () => {
-        this.loadCards();
-      }
-    )
+    this.cardService.deleteCard(id).subscribe(() => {
+      this.loadCards();
+    });
   }
 
   loadCards() {
-    this.cardService.getAllCards().subscribe(
-      (risultato) => {
-        this.cards = risultato;
-      }
-    )
+    this.cardService.getAllCards().subscribe((risultato) => {
+      this.cards = risultato;
+    });
   }
 
   onCardAdded() {
     this.loadCards();
   }
-  }
+}

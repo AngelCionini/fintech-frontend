@@ -1,7 +1,8 @@
-
-<app-sign-in *ngIf="formType === 'signin'; else register" (register)="switchFormType()"></app-sign-in>
+<app-sign-in
+  *ngIf="formType === 'signin'; else register"
+  (register)="switchFormType()"
+></app-sign-in>
 
 <ng-template #register>
-    <app-register (signIn)="switchFormType()"></app-register>
+  <app-register (signIn)="switchFormType()"></app-register>
 </ng-template>
-
