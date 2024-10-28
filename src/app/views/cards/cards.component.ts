@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CardsService } from '../../api/cards.service';
-import { Card, Movement } from '../../models/card/card.model';
-import { DataSource } from '@angular/cdk/collections';
-import { Observable, ReplaySubject } from 'rxjs';
+import { Card} from '../../models/card/card.model';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-cards',
@@ -11,7 +10,9 @@ import { Observable, ReplaySubject } from 'rxjs';
 })
 export class CardsComponent implements OnInit {
   cards: Card[] = [];
-  displayedColumns = ['creditCardIcon', 'name', 'deleteIcon'];
+  displayedColumns = ['creditCardIcon', 'name', 'movementsIcon', 'deleteIcon'];
+  @ViewChild('drawer') drawer!: MatDrawer;
+  loading = false;
 
   constructor(private cardService: CardsService) {}
 
@@ -26,12 +27,15 @@ export class CardsComponent implements OnInit {
   }
 
   loadCards() {
+    this.loading = true;
     this.cardService.getAllCards().subscribe((risultato) => {
       this.cards = risultato;
+      this.loading = false;
     });
   }
 
   onCardAdded() {
+    this.drawer.close();
     this.loadCards();
   }
 }

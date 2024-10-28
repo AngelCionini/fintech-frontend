@@ -1,11 +1,5 @@
 <h2
-  style="
-    padding-left: 16px;
-    margin-top: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  "
+  class="title"
 >
   Aggiungi Carta
   <button mat-icon-button (click)="onClose()" aria-label="Chiudi">
@@ -14,29 +8,30 @@
 </h2>
 <form style="padding: 0 16px" #form="ngForm" (ngSubmit)="onSubmit(form)">
   <div style="display: flex; flex-direction: column; width: 100%">
+
     <mat-form-field style="flex: 1; margin-bottom: 16px">
       <mat-label>Tipo di carta</mat-label>
-      <mat-select required name="tipo" ngModel #tipo="ngModel">
+      <mat-select required name="type" ngModel #type="ngModel">
         <mat-option value="visa">Visa</mat-option>
         <mat-option value="mastercard">Mastercard</mat-option>
       </mat-select>
 
-      @if (tipo.touched && tipo.invalid) {
+      @if (type.touched && type.invalid) {
       <mat-error> Selezionare il tipo di carta. </mat-error>
       }
     </mat-form-field>
     <div style="display: flex; width: 100%; margin-bottom: 16px">
       <mat-form-field style="flex: 1; margin-right: 8px">
         <mat-label>Nome</mat-label>
-        <input matInput required name="nome" ngModel #nome="ngModel" />
-        @if (nome.touched && nome.invalid) {
+        <input matInput required name="name" ngModel #name="ngModel" />
+        @if (name.touched && name.invalid) {
         <mat-error> Il nome è obbligatorio. </mat-error>
         }
       </mat-form-field>
       <mat-form-field style="flex: 1">
         <mat-label>Cognome</mat-label>
-        <input matInput required name="cognome" ngModel #cognome="ngModel" />
-        @if (cognome.touched && cognome.invalid) {
+        <input matInput required name="surname" ngModel #surname="ngModel" />
+        @if (surname.touched && surname.invalid) {
         <mat-error> Il cognome è obbligatorio. </mat-error>
         }
       </mat-form-field>
@@ -46,16 +41,16 @@
       <input
         matInput
         required
-        name="numero"
+        name="number"
         ngModel
-        #numero="ngModel"
+        #number="ngModel"
         maxlength="16"
         minlength="16"
       />
       <mat-hint>Il valore deve essere lungo 16 caratteri</mat-hint>
-      @if (numero.touched && numero.dirty && numero.invalid) {
+      @if (number.touched && number.dirty && number.invalid) {
       <mat-error>
-        Il numero carta e obbligatorio e deve essere di 16 caratteri.
+        Il numero carta è obbligatorio e deve essere di 16 caratteri.
       </mat-error>
       }
     </mat-form-field>
@@ -65,9 +60,9 @@
         type="text"
         matInput
         required
-        name="codice"
+        name="csc"
         ngModel
-        #codice="ngModel"
+        #csc="ngModel"
         maxlength="3"
         minlength="3"
         pattern="\d{3}"
@@ -75,9 +70,9 @@
       <mat-hint>Il valore deve essere lungo 3 caratteri</mat-hint>
       <mat-error
         *ngIf="
-          codice.touched &&
-          codice.dirty &&
-          (codice.invalid || !isValidSecurityCode(codice.value))
+          csc.touched &&
+          csc.dirty &&
+          (csc.invalid || !isValidSecurityCode(csc.value))
         "
       >
         Il codice di sicurezza è obbligatorio e deve essere di 3 caratteri.

@@ -21,6 +21,9 @@ import { CardsComponent } from './views/cards/cards.component';
 import {MatTableModule} from '@angular/material/table';
 import { NewCardComponent } from "./views/cards/new-card/new-card.component";
 import {MatSelectModule} from '@angular/material/select';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MovementsComponent } from "./views/cards/movements/movements.component";
+
 
 
 @NgModule({
@@ -32,7 +35,8 @@ import {MatSelectModule} from '@angular/material/select';
       SidenavComponent,
       HomeComponent,
       CardsComponent,
-      NewCardComponent
+      NewCardComponent,
+      MovementsComponent
 
     ],
     bootstrap: [AppComponent],
@@ -49,7 +53,8 @@ import {MatSelectModule} from '@angular/material/select';
       MatSidenavModule,
       MatListModule,
       MatTableModule,
-      MatSelectModule
+      MatSelectModule,
+      MatProgressSpinnerModule
     ],
     providers: [
       provideAnimationsAsync()

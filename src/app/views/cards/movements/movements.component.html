@@ -1,0 +1,38 @@
+<div class="example-sidenav-content">
+    <h1>Lista dei movimenti</h1>
+    <mat-form-field>
+        <mat-label>Seleziona una carta:</mat-label>
+        <mat-select (selectionChange)="onCardSelect($event.value)" [(value)]="selectedCard">
+          <mat-option *ngFor="let card of cards" [value]="card._id">{{card.number}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div *ngIf="movements.length > 0" class="example-sidenav-content">
+        <h1><strong>Saldo: €{{total}}</strong></h1>
+        <table mat-table [dataSource]="movements" class="mat-elevation-z8" style="width: 100%;">
+
+            <ng-container matColumnDef="timestamp">
+              <td mat-cell *matCellDef="let movement" style="width: 20px"> [{{movement.timestamp | date:'dd/MM/yy'}}] </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="amount">
+              <td mat-cell *matCellDef="let movement" style="width: 20px" [ngClass]="movement.type === 'in' ? 'in' : 'out'"><strong>€{{movement.amount}}</strong> </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="title">
+              <td mat-cell *matCellDef="let movement"> {{movement.title}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="description">
+              <td mat-cell *matCellDef="let movement"> {{movement.description}} </td>
+            </ng-container>
+          
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <br>
+          <button mat-raised-button style="width: 100%; color: primary !important;" (click)="loadMoreMoviments(selectedCard)">
+            Carica altro
+          </button>
+    </div>
+</div>
+
