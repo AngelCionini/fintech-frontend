@@ -24,8 +24,7 @@ export class MovementsComponent implements OnInit {
   offset: number = 0;
   selectedCard!: string;
   loading = false;
-  readonly panelOpenState = signal(false);
-  fullLimit!: number;
+  panelOpenState = false;
   disabled = false;
 
   ngOnInit(): void {
