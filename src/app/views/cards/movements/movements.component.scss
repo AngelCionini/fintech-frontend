@@ -1,6 +1,4 @@
 .example-sidenav-content {
-    height: 100%;
-    width: 100%;
     padding: 10px;
 }
 
@@ -10,4 +8,16 @@
 
 .out {
     color: red;
+}
+
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+table {
+    width: 100%;
 }

@@ -23,7 +23,8 @@ import { NewCardComponent } from "./views/cards/new-card/new-card.component";
 import {MatSelectModule} from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MovementsComponent } from "./views/cards/movements/movements.component";
-
+import { CardPipePipe } from "./core/card-pipe.pipe";
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import { MovementsComponent } from "./views/cards/movements/movements.component"
       HomeComponent,
       CardsComponent,
       NewCardComponent,
-      MovementsComponent
+      MovementsComponent,
 
     ],
     bootstrap: [AppComponent],
@@ -54,7 +55,9 @@ import { MovementsComponent } from "./views/cards/movements/movements.component"
       MatListModule,
       MatTableModule,
       MatSelectModule,
-      MatProgressSpinnerModule
+      MatProgressSpinnerModule,
+      CardPipePipe,
+      MatExpansionModule
     ],
     providers: [
       provideAnimationsAsync()
