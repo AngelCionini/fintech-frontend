@@ -43,7 +43,7 @@ export class TrasferimentiComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     this.cardService.transferMoney(form.value).subscribe(() => {
-      const snackBarRef = this.snackBar.open('Trasferimento completato con successo!', '', {
+      const snackBarRef = this.snackBar.open('Trasferimento effettuato con successo!', '', {
         duration: 2000,
       });
       snackBarRef.afterDismissed().subscribe(
