@@ -1,0 +1,106 @@
+<div class="example-sidenav-content" style="padding-top: 20px;">
+  <div class="container">
+  <div class="example-form">
+    <h1>Trasferimenti</h1>
+    <div class="example-full-width" style="padding-bottom: 20px;">
+      <button color="primary"
+        style="width: 100%;"
+        mat-raised-button 
+        (click)="openDialog()">
+        Lista contatti
+      </button>
+    </div>
+        <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="example-form">
+          <mat-form-field class="example-full-width">
+            <input
+              matInput
+              id="name"
+              type="text"
+              name="name"
+              [(ngModel)] = "contact.name"
+              required
+              placeholder="Nome*"
+              #name="ngModel"
+            />
+      
+            @if (name.touched && name.invalid) {
+            <mat-error> Il nome è obbligatorio. </mat-error>
+            }
+          </mat-form-field>
+      
+          <mat-form-field class="example-full-width">
+            <input
+              matInput
+              id="surname"
+              type="text"
+              name="surname"
+              [(ngModel)] = "contact.surname"
+              required
+              placeholder="Cognome*"
+              #surname="ngModel"
+            />
+      
+            @if (surname.touched && surname.invalid) {
+            <mat-error> Il cognome è obbligatorio. </mat-error>
+            }
+          </mat-form-field>
+      
+          <mat-form-field class="example-full-width">
+            <input
+              matInput
+              id="iban"
+              type="text"
+              name="iban"
+              [(ngModel)] = "contact.iban"
+              required
+              placeholder="IBAN*"
+              #iban="ngModel"
+              maxlength="27"
+              minlength="27"
+            />
+            <mat-hint>Es: IT00A0044256000001234894732</mat-hint>
+            <mat-error *ngIf="iban.touched && iban.errors?.['required']">L'IBAN è obbligatorio.</mat-error>
+            <mat-error *ngIf="iban.errors?.['minlength']">L'IBAN deve contenere 27 caratteri.</mat-error>
+          </mat-form-field>
+      
+          <mat-form-field class="example-full-width">
+            <input
+              matInput
+              id="amount"
+              type="text"
+              name="amount"
+              ngModel
+              required
+              placeholder="Importo*"
+              #amount="ngModel"
+              pattern="^[0-9]+\.[0-9][0-9]$"
+            />
+            <mat-error *ngIf="amount.errors?.['pattern']">Inserire un importo valido con due cifre decimali.</mat-error>
+            <mat-error *ngIf="amount.touched && amount.errors?.['required']">Inserire l'importo.</mat-error>
+
+            
+          </mat-form-field>
+      
+          <mat-form-field class="example-full-width">
+            <mat-label>Seleziona una carta</mat-label>
+            <mat-select required name="cardId" #cardId="ngModel" ngModel>
+              <mat-option *ngFor="let card of cards" [value]="card._id">{{card.number | cardPipe }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div class="example-full-width">
+            <button
+              color="primary"
+              style="width: 100%"
+              mat-raised-button
+              type="submit"
+              [disabled]="form.form.invalid"
+            >
+              Trasferisci denaro
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
+<br><br>

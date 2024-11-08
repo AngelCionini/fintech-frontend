@@ -1,0 +1,57 @@
+.selectedIcon {
+    cursor: pointer;
+}
+
+::ng-deep .mat-dialog-container {
+    width: auto;
+    height: auto;
+    padding: 16px;
+}
+
+.contenitore {
+    padding: 25px;
+}
+
+.contact-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-right: 80px;
+}
+
+.contact-details > .name-surname {
+    display: flex;
+    align-items: center;
+}
+
+.contact-details mat-icon {
+    margin-right: 8px;
+}
+
+.contact-details > .iban {
+    margin-top: 4px;
+}
+
+.contact-actions {
+    display: flex;
+    align-items: center;
+}
+
+.contact-actions mat-icon {
+    margin-left: 5px;
+}
+
+.contact-icon {
+    margin-right: 10px;
+}
+
+.contact-actions mat-icon:hover {
+    color: rgb(76, 76, 201);
+}

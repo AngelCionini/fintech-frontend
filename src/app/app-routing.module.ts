@@ -4,6 +4,7 @@ import { LoginComponent } from "./views/login/login.component";
 import { HomeComponent } from "./views/home/home.component";
 import { CardsComponent } from "./views/cards/cards.component";
 import { MovementsComponent } from "./views/cards/movements/movements.component";
+import { TrasferimentiComponent } from "./views/cards/trasferimenti/trasferimenti.component";
 
 export const routes: Routes = [
   {
@@ -25,6 +26,10 @@ export const routes: Routes = [
   {
     path: 'movement/:cardId',
     component: MovementsComponent
+  },
+  {
+    path: 'trasferimenti',
+    component: TrasferimentiComponent
   },
   {
     path: '',

@@ -1,0 +1,39 @@
+<div class="contenitore">
+    <mat-form-field style="width: 100%;" appearance="outline">
+        <mat-label>Cerca</mat-label>
+        <input matInput (keyup)="applyFilter($event)">
+    </mat-form-field>
+
+    <h2>Contatti</h2>
+
+    <div *ngFor="let contact of filteredContacts" class="contact-item">
+        <div class="contact-icon">
+            <mat-icon color="primary">account_circle</mat-icon>
+        </div>
+
+        <div class="contact-details">
+            <div class="name-surname">
+                <span>{{ contact.name }} {{ contact.surname }}</span>
+            </div>
+
+            <div class="iban">
+                <span>{{ contact.iban }}</span>
+            </div>
+        </div>
+
+        <div class="contact-actions">
+            <mat-icon (click)="checkContact(contact)" class="selectedIcon">check</mat-icon>
+            <mat-icon (click)="modifyContact(contact)" class="selectedIcon">edit</mat-icon>
+            <mat-icon (click)="deleteContact(contact._id)" class="selectedIcon">delete</mat-icon>
+        </div>
+
+    </div>
+    <br>
+
+    <button
+    mat-raised-button
+    color="primary"
+    style="width: 100%" 
+    (click)="onClickNewContact()">Nuovo contatto
+    </button>
+</div>

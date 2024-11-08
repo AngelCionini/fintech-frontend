@@ -1,0 +1,74 @@
+<div class="contenitore">
+    <div>
+        <button mat-raised-button mat-dialog-close color="primary"
+        style="width: 100%" >Indietro</button>
+    </div>
+    <br>
+
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="example-form">
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            type="text"
+            id="name"
+            name="name"
+            [(ngModel)] = "data.name"
+            required
+            placeholder="Nome*"
+            #name="ngModel"
+          />
+    
+          @if (name.touched && name.invalid) {
+          <mat-error> Il nome è obbligatorio. </mat-error>
+          }
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            id="surname"
+            type="text"
+            name="surname"
+            [(ngModel)] = "data.surname"
+            required
+            placeholder="Cognome*"
+            #surname="ngModel"
+          />
+    
+          @if (surname.touched && surname.invalid) {
+          <mat-error> Il cognome è obbligatorio. </mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input
+              matInput
+              required
+              type="text"
+              id="iban"
+              name="iban"
+              [(ngModel)] = "data.iban"
+              #iban="ngModel"
+              placeholder="IBAN*"
+              maxlength="27"
+              minlength="27"
+            />
+            <mat-hint>Es: IT00A0044256000001234894732</mat-hint>
+            <mat-error *ngIf="iban.touched && iban.errors?.['required']">L'IBAN è obbligatorio. </mat-error>
+            <mat-error *ngIf="iban.errors?.['minlength']">L'IBAN deve contenere 27 caratteri.</mat-error>
+          </mat-form-field>
+          <br><br>
+          <div>
+            <button
+              mat-raised-button
+              color="primary"
+              style="width: 100%" 
+              type="submit"
+              [disabled]="form.form.invalid"
+            >
+              Salva
+            </button>
+          </div> 
+    </form>
+</div>
+

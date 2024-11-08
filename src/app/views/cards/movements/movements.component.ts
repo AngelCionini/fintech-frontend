@@ -1,9 +1,9 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Card } from '../../../models/card/card.model';
 import { CardsService } from '../../../api/cards.service';
 import { Movement, MovementApiResponse } from '../../../models/movement.model';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { delay, map, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-movements',
@@ -22,19 +22,30 @@ export class MovementsComponent implements OnInit {
   displayedColumns = ['timestamp', 'amount', 'title', 'description'];
   limit: number = 5;
   offset: number = 0;
-  selectedCard!: string;
+  selectedCard!: Card;
   loading = false;
   panelOpenState = false;
   disabled = false;
 
   ngOnInit(): void {
-    this.loadCards();
-
     this.activatedRoute.paramMap.subscribe((params) => {
       const cardId = params.get('cardId');
       if (cardId) {
-        this.selectedCard = cardId;
-        this.onCardSelect(cardId);
+        this.cardService.getAllCards()
+          .pipe(
+            map((res) => {
+              this.cards = res; 
+            })
+          )
+          .subscribe(() => {
+            const selectedCard = this.cards.find(x => x._id === cardId);
+            if(selectedCard) {
+              this.selectedCard = selectedCard;
+            }
+            this.onCardSelect(this.selectedCard);
+          });
+      } else {
+        this.loadCards();
       }
     });
   }
@@ -45,45 +56,50 @@ export class MovementsComponent implements OnInit {
     });
   }
 
-  onCardSelect(cardId: string) {
+  onCardSelect(card: Card) {
     this.loading = true;
     this.movements = [];
     this.offset = 0;
-    this.selectedCard = cardId;
-    this.total = 0;
+    this.selectedCard = card;
+    this.total = card.amount;
     this.disabled = false;
 
-    this.cardService
-      .getCardMovements(cardId, this.limit, this.offset)
-      .pipe(
-        switchMap((res: MovementApiResponse) => {
-          this.movements = res.data;
-          return this.cardService.getCardMovements(
-            cardId,
-            res.total,
-            this.offset
-          );
-        })
-      )
-      .subscribe((res) => {
-        const allMoviments = res.data;
-        allMoviments.forEach((moviment) => {
-          if (moviment.type === 'in') {
-            this.total += moviment.amount;
-          } else {
-            this.total -= moviment.amount;
-          }
-          this.loading = false;
-          return this.total;
-        });
+    this.cardService.getCardMovements(card._id, this.limit, this.offset)
+    .pipe(
+      delay(500)
+    )
+    .subscribe(
+      (res: MovementApiResponse) => {
+        this.movements = res.data;
+        this.loading = false;
       });
-  }
+    }
 
-  loadMoreMoviments(cardId: string) {
+/*    this.cardService.getAllCards()
+    .pipe(
+      switchMap(
+        (allCards: Card[]) => {
+          const card = allCards.find( x => x._id === cardId);
+          this.total = card?.amount || 0;
+          return this.cardService.getCardMovements(cardId, this.limit, this.offset);
+        }),
+        delay(500)
+      )
+    .subscribe(
+      (res: MovementApiResponse) => {
+        this.movements = res.data;
+        this.loading = false;
+      });
+  }*/
+
+  loadMoreMoviments(card: Card) {
     this.loading = true;
     this.offset += this.limit;
     this.cardService
-      .getCardMovements(cardId, this.limit, this.offset)
+      .getCardMovements(card._id, this.limit, this.offset)
+      .pipe(
+        delay(500)
+      )
       .subscribe((risultato) => {
         if(risultato.data.length > 0) {
           this.movements = [...this.movements, ...risultato.data];

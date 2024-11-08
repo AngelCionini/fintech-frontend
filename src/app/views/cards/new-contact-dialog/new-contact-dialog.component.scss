@@ -1,0 +1,9 @@
+.contenitore {
+    padding: 25px;
+}
+
+::ng-deep .mat-dialog-container {
+    width: auto;
+    height: auto;
+    padding: 16px;
+}

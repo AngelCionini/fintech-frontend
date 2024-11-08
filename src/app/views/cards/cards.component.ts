@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CardsService } from '../../api/cards.service';
 import { Card} from '../../models/card/card.model';
 import { MatDrawer } from '@angular/material/sidenav';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-cards',
@@ -28,7 +29,11 @@ export class CardsComponent implements OnInit {
 
   loadCards() {
     this.loading = true;
-    this.cardService.getAllCards().subscribe((risultato) => {
+    this.cardService.getAllCards()
+    .pipe(
+      delay(500)
+    )
+    .subscribe((risultato) => {
       this.cards = risultato;
       this.loading = false;
     });

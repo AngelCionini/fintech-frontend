@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { CardForm } from '../../../models/card/card.model';
 import { NgForm } from '@angular/forms';
 import { CardsService } from '../../../api/cards.service';
 

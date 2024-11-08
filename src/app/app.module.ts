@@ -25,6 +25,11 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MovementsComponent } from "./views/cards/movements/movements.component";
 import { CardPipePipe } from "./core/card-pipe.pipe";
 import {MatExpansionModule} from '@angular/material/expansion';
+import { TrasferimentiComponent } from './views/cards/trasferimenti/trasferimenti.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ContactDialogComponent } from './views/cards/contact-dialog/contact-dialog.component';
+import { NewContactDialogComponent } from './views/cards/new-contact-dialog/new-contact-dialog.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -38,6 +43,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
       CardsComponent,
       NewCardComponent,
       MovementsComponent,
+      TrasferimentiComponent,
+      ContactDialogComponent,
+      NewContactDialogComponent,
 
     ],
     bootstrap: [AppComponent],
@@ -57,7 +65,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
       MatSelectModule,
       MatProgressSpinnerModule,
       CardPipePipe,
-      MatExpansionModule
+      MatExpansionModule,
+      MatDialogModule,
+      MatSnackBarModule
     ],
     providers: [
       provideAnimationsAsync()
